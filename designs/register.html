@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Up | Pro-File Asset Management</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#60A5FA", // Soft sky blue
+                        "secondary": "#FCA5A5", // Warm peach
+                        "accent-blue": "#EFF6FF",
+                        "accent-peach": "#FFF1F2",
+                        "text-main": "#475569",
+                        "dark-surface": "#0F172A",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.75rem",
+                        "lg": "1.25rem",
+                        "xl": "1.75rem",
+                        "2xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body { @apply text-text-main bg-white; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gradient-mesh {
+            background-color: #0F172A;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(96, 165, 250, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(252, 165, 165, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased h-screen overflow-hidden">
+<div class="flex h-full w-full">
+<div class="hidden lg:flex lg:w-1/2 gradient-mesh p-16 flex-col justify-between relative overflow-hidden">
+<div class="absolute top-1/4 -right-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-1/4 -left-12 w-48 h-48 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-12">
+<div class="size-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined !text-2xl">folder_managed</span>
+</div>
+<h2 class="text-2xl font-extrabold tracking-tight font-display text-white">Pro-<span class="text-primary">File</span></h2>
+</div>
+<h1 class="text-5xl font-extrabold font-display leading-[1.1] text-white max-w-md">
+                Automate Your <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Design Pipeline.</span>
+</h1>
+<p class="mt-6 text-slate-400 text-lg max-w-sm">
+                Join 500+ agencies automating their web-based asset delivery with secure, multi-tenant Laravel power.
+            </p>
+</div>
+<div class="relative z-10">
+<div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[2.5rem] max-w-md shadow-2xl">
+<div class="flex items-center gap-1 text-yellow-400 mb-4">
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+<span class="material-symbols-outlined !text-sm">star</span>
+</div>
+<p class="text-white text-lg font-medium leading-relaxed mb-6">
+                    "Pro-File is the missing link in our design-to-dev workflow. The auto-extraction and in-browser previews save us hours every week."
+                </p>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full border-2 border-primary overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-9TjzIHonAViFqSCXyF7RkyYlNC8VQNlTa57R0UsmnmK9uHGGuFU_NLdHpU6qV070l_e8XcSNn-rQIwf1F_PmjVb0229hIwPRs8sO_9fGFCOPq03_gnAW_efIybqNda3Byzakd2wM_0zyFR_qvK6hrT699bPiSJW3MFAHZA5-YVJUp-FAsPMvT5GuORihodolQEp0CC_UpFV0yjDlTnDflwOogc32uu-wrFV-YLJLhJ3RdDq-BRDNRlDkS1_v2R5Ukpp35Gy9wMM"/>
+</div>
+<div>
+<div class="font-bold text-white">Sarah Chen</div>
+<div class="text-xs text-slate-400 font-bold uppercase tracking-wider">Creative Lead @ Vivid</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex items-center gap-8 opacity-40 grayscale contrast-200">
+<div class="text-white font-black text-xl">VIVID</div>
+<div class="text-white font-black text-xl">SPARK</div>
+<div class="text-white font-black text-xl">ORBITAL</div>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/2 bg-white flex items-center justify-center p-8 overflow-y-auto">
+<div class="w-full max-w-[440px] flex flex-col gap-8 py-12">
+<div class="lg:hidden flex items-center gap-2 mb-4">
+<div class="size-10 bg-primary rounded-xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined !text-2xl">folder_managed</span>
+</div>
+<h2 class="text-2xl font-extrabold tracking-tight font-display text-slate-800">Pro-<span class="text-primary">File</span></h2>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-3xl font-extrabold font-display text-slate-900">Create your account</h2>
+<p class="text-slate-500 font-medium">Start managing your assets more efficiently today.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 px-4 py-3 border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors font-semibold text-slate-700 text-sm">
+<svg class="w-5 h-5" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                    Google
+                </button>
+<button class="flex items-center justify-center gap-3 px-4 py-3 border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors font-semibold text-slate-700 text-sm">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+</svg>
+                    GitHub
+                </button>
+</div>
+<div class="relative flex items-center justify-center">
+<div class="absolute w-full border-t border-slate-100"></div>
+<span class="relative bg-white px-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Or with email</span>
+</div>
+<form action="#" class="flex flex-col gap-5">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700" for="full-name">Full Name</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all text-slate-800 placeholder:text-slate-400" id="full-name" placeholder="John Doe" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700" for="company-name">Company Name</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all text-slate-800 placeholder:text-slate-400" id="company-name" placeholder="Acme Inc." type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700" for="email">Work Email</label>
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all text-slate-800 placeholder:text-slate-400" id="email" placeholder="john@company.com" type="email"/>
+</div>
+<div class="flex flex-col gap-2 relative">
+<div class="flex justify-between items-center">
+<label class="text-sm font-bold text-slate-700" for="password">Password</label>
+<span class="text-xs text-slate-400 font-medium">Min. 8 characters</span>
+</div>
+<div class="relative">
+<input class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all text-slate-800 placeholder:text-slate-400 pr-10" id="password" placeholder="••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 !text-slate-400 cursor-pointer">visibility</span>
+</div>
+</div>
+<div class="flex items-start gap-3 mt-2">
+<input class="mt-1 size-4 rounded text-primary focus:ring-primary/20 border-slate-300" id="terms" type="checkbox"/>
+<label class="text-xs text-slate-500 leading-normal" for="terms">
+                        By creating an account, you agree to our <a class="text-primary font-bold hover:underline" href="#">Terms of Service</a> and <a class="text-primary font-bold hover:underline" href="#">Privacy Policy</a>.
+                    </label>
+</div>
+<button class="w-full bg-primary text-white font-extrabold py-4 rounded-xl shadow-lg shadow-primary/20 hover:brightness-105 active:scale-[0.98] transition-all text-lg mt-4">
+                    Create Account
+                </button>
+</form>
+<p class="text-center text-slate-600 font-medium">
+                Already have an account? <a class="text-primary font-extrabold hover:underline" href="#">Log in</a>
+</p>
+</div>
+</div>
+</div>
+
+</body></html>

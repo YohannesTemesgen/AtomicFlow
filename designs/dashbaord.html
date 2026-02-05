@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ElectroAdmin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#34D399", // Emerald-400 equivalent
+                        secondary: "#10B981", // Emerald-500 equivalent
+                        "background-light": "#F3F4F6", // Gray-100
+                        "background-dark": "#111827", // Gray-900
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1F2937",
+                        "text-light": "#1F2937",
+                        "text-dark": "#F9FAFB",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        xl: "1rem",
+                        "2xl": "1.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="font-body bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-200">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 flex-shrink-0 bg-surface-light dark:bg-surface-dark border-r border-gray-200 dark:border-gray-700 flex flex-col transition-colors duration-200 h-full overflow-y-auto hidden md:flex">
+<div class="h-16 flex items-center px-6 border-b border-gray-100 dark:border-gray-800">
+<span class="material-icons-outlined text-green-600 dark:text-green-400 mr-2">bolt</span>
+<span class="text-xl font-bold text-gray-800 dark:text-white">ElectroAdmin</span>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-6">
+<div>
+<h3 class="px-2 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Main Menu</h3>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium rounded-md bg-green-700 text-white group relative shadow-md shadow-green-200 dark:shadow-none" href="#">
+<span class="material-icons-outlined mr-3 text-lg">dashboard</span>
+                                Dashboard
+                            </a>
+</li>
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">shopping_cart</span>
+                                Orders
+                                <span class="ml-auto bg-orange-500 text-white py-0.5 px-2 rounded-full text-xs font-semibold">3</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">inventory_2</span>
+                                Products
+                            </a>
+</li>
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">category</span>
+                                Categories
+                            </a>
+</li>
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">people</span>
+                                Customers
+                            </a>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="px-2 text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Management</h3>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">view_carousel</span>
+                                Banner Management
+                            </a>
+</li>
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">campaign</span>
+                                Announcements
+                            </a>
+</li>
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">description</span>
+                                Pages
+                            </a>
+</li>
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">analytics</span>
+                                System Analytics
+                            </a>
+</li>
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">notifications</span>
+                                Push Notifications
+                            </a>
+</li>
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">headset_mic</span>
+                                Support Chat
+                            </a>
+</li>
+<li>
+<a class="flex items-center px-2 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white group" href="#">
+<span class="material-icons-outlined mr-3 text-lg text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-300">settings</span>
+                                Settings
+                            </a>
+</li>
+</ul>
+</div>
+</nav>
+</aside>
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-background-light dark:bg-background-dark">
+<header class="h-16 bg-surface-light dark:bg-surface-dark border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 z-10 transition-colors duration-200">
+<div class="flex items-center md:hidden">
+<button class="text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-white focus:outline-none">
+<span class="material-icons-outlined">menu</span>
+</button>
+<div class="ml-4 flex items-center">
+<span class="material-icons-outlined text-green-600 dark:text-green-400 mr-2">bolt</span>
+<span class="text-xl font-bold text-gray-800 dark:text-white">ElectroAdmin</span>
+</div>
+</div>
+<div class="hidden md:block">
+<h1 class="text-2xl font-bold text-gray-800 dark:text-white">Dashboard Overview</h1>
+<p class="text-sm text-gray-500 dark:text-gray-400">Welcome back! Here's what's happening today.</p>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative hidden sm:block">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons-outlined text-gray-400 text-lg">search</span>
+</span>
+<input class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg leading-5 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-green-500 focus:ring-1 focus:ring-green-500 sm:text-sm transition duration-150 ease-in-out" placeholder="Search orders, products..." type="text"/>
+</div>
+<button class="p-2 rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-300 dark:hover:text-white focus:outline-none bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" id="theme-toggle">
+<span class="material-icons-outlined text-xl">dark_mode</span>
+</button>
+<button class="p-2 rounded-full text-gray-400 hover:text-gray-500 dark:text-gray-300 dark:hover:text-white focus:outline-none bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 relative">
+<span class="material-icons-outlined text-xl">notifications</span>
+<span class="absolute top-1 right-2 block h-2 w-2 rounded-full bg-orange-500 ring-2 ring-white dark:ring-gray-800"></span>
+</button>
+<div class="relative">
+<button class="flex items-center max-w-xs rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-1 pr-3">
+<span class="h-8 w-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-800 dark:text-green-200 font-semibold text-sm mr-2">A</span>
+<div class="text-left hidden lg:block">
+<p class="text-sm font-medium text-gray-700 dark:text-white">Admin User</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Administrator</p>
+</div>
+<span class="material-icons-outlined text-gray-400 ml-2 text-sm">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto bg-gray-50 dark:bg-background-dark p-6 transition-colors duration-200">
+<div class="max-w-7xl mx-auto space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-green-50 dark:bg-green-900/30 rounded-lg text-green-600 dark:text-green-400">
+<span class="material-icons-outlined">payments</span>
+</div>
+<div class="px-2 py-1 bg-green-50 dark:bg-green-900/30 rounded text-xs font-semibold text-green-600 dark:text-green-400 flex items-center">
+                                    +0% <span class="material-icons-outlined text-xs ml-0.5">arrow_upward</span>
+</div>
+</div>
+<h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Revenue</h3>
+<p class="text-2xl font-bold text-gray-800 dark:text-white mt-1">$0</p>
+<div class="absolute right-0 top-0 opacity-5 transform translate-x-4 -translate-y-2 pointer-events-none">
+<span class="material-icons-outlined text-8xl">payments</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-50 dark:bg-orange-900/30 rounded-lg text-orange-500 dark:text-orange-400">
+<span class="material-icons-outlined">shopping_bag</span>
+</div>
+<div class="px-2 py-1 bg-green-50 dark:bg-green-900/30 rounded text-xs font-semibold text-green-600 dark:text-green-400 flex items-center">
+                                    +0% <span class="material-icons-outlined text-xs ml-0.5">arrow_upward</span>
+</div>
+</div>
+<h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">New Orders</h3>
+<p class="text-2xl font-bold text-gray-800 dark:text-white mt-1">0</p>
+<div class="absolute right-0 top-0 opacity-5 transform translate-x-4 -translate-y-2 pointer-events-none">
+<span class="material-icons-outlined text-8xl">shopping_bag</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg text-blue-500 dark:text-blue-400">
+<span class="material-icons-outlined">visibility</span>
+</div>
+<div class="px-2 py-1 bg-red-50 dark:bg-red-900/30 rounded text-xs font-semibold text-red-600 dark:text-red-400 flex items-center">
+                                    -2.1% <span class="material-icons-outlined text-xs ml-0.5">arrow_downward</span>
+</div>
+</div>
+<h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Site Visitors</h3>
+<p class="text-2xl font-bold text-gray-800 dark:text-white mt-1">2</p>
+<div class="absolute right-0 top-0 opacity-5 transform translate-x-4 -translate-y-2 pointer-events-none">
+<span class="material-icons-outlined text-8xl">visibility</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg text-yellow-600 dark:text-yellow-400">
+<span class="material-icons-outlined">inventory</span>
+</div>
+<div class="px-2 py-1 bg-gray-50 dark:bg-gray-700 rounded text-xs font-semibold text-gray-500 dark:text-gray-300 flex items-center">
+                                   Total
+                                </div>
+</div>
+<h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Products</h3>
+<p class="text-2xl font-bold text-gray-800 dark:text-white mt-1">11</p>
+<div class="absolute right-0 top-0 opacity-5 transform translate-x-4 -translate-y-2 pointer-events-none">
+<span class="material-icons-outlined text-8xl">inventory</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="text-lg font-bold text-gray-800 dark:text-white">Sales Analytics</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Revenue performance (Last 7 Days)</p>
+</div>
+<button class="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+<span class="material-icons-outlined">more_horiz</span>
+</button>
+</div>
+<div class="h-64 w-full">
+<canvas id="salesChart"></canvas>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="text-lg font-bold text-gray-800 dark:text-white">Inventory Management</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Real-time stock levels &amp; actions</p>
+</div>
+<button class="text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
+<span class="material-icons-outlined">tune</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="border border-green-100 dark:border-green-900 bg-green-50/30 dark:bg-green-900/10 rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="p-2 bg-white dark:bg-surface-dark rounded-lg text-green-600 dark:text-green-400 shadow-sm">
+<span class="material-icons-outlined">inventory_2</span>
+</div>
+<div>
+<p class="text-sm font-medium text-gray-600 dark:text-gray-300">Healthy Stock</p>
+<p class="text-xs text-gray-400">8 Products</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 text-xs font-bold rounded">Good</span>
+</div>
+<div class="border border-orange-100 dark:border-orange-900 bg-orange-50/30 dark:bg-orange-900/10 rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="p-2 bg-white dark:bg-surface-dark rounded-lg text-orange-500 dark:text-orange-400 shadow-sm">
+<span class="material-icons-outlined">warning</span>
+</div>
+<div>
+<p class="text-sm font-medium text-gray-600 dark:text-gray-300">Low Stock Alerts</p>
+<p class="text-xs text-gray-400">3 Products</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 text-xs font-bold rounded">Action</span>
+</div>
+</div>
+<div class="mt-6">
+<h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Low Stock Alerts Details</h4>
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+<thead class="bg-gray-50 dark:bg-gray-800">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" scope="col">Product</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" scope="col">SKU</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" scope="col">Stock Level</th>
+<th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" scope="col">Action</th>
+</tr>
+</thead>
+<tbody class="bg-white dark:bg-surface-dark divide-y divide-gray-200 dark:divide-gray-700">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="h-8 w-8 rounded-full bg-gray-200 dark:bg-gray-600 flex-shrink-0"></div>
+<div class="ml-4">
+<div class="text-sm font-medium text-gray-900 dark:text-white">Wireless Headphones</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">WH-001</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">2 Left</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<a class="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300" href="#">Restock</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('span');
+        // Check local storage or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.textContent = 'light_mode';
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.textContent = 'dark_mode';
+        }
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                themeIcon.textContent = 'dark_mode';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                themeIcon.textContent = 'light_mode';
+            }
+            updateChartTheme();
+        });
+        // Chart.js Implementation
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        let salesChart;
+        function initChart() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const gridColor = isDark ? '#374151' : '#f3f4f6';
+            const tickColor = isDark ? '#9ca3af' : '#6b7280';
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(16, 185, 129, 0.2)'); // Green
+            gradient.addColorStop(1, 'rgba(16, 185, 129, 0)');
+            const data = {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [0, 0, 0, 0, 0, 0, 0], // Empty data as per screenshot 0 revenue
+                    borderColor: '#10B981', // Green-500
+                    backgroundColor: gradient,
+                    borderWidth: 2,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#10B981',
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.4,
+                    fill: true
+                }]
+            };
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: isDark ? '#1f2937' : '#ffffff',
+                            titleColor: isDark ? '#f3f4f6' : '#111827',
+                            bodyColor: isDark ? '#d1d5db' : '#4b5563',
+                            borderColor: isDark ? '#374151' : '#e5e7eb',
+                            borderWidth: 1,
+                            padding: 10,
+                            displayColors: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: gridColor,
+                                drawBorder: false,
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                color: tickColor,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: (context) => {
+                                    // Make 'Wed' green as in the screenshot
+                                    return context.tick.label === 'Wed' ? '#10B981' : tickColor;
+                                },
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            if (salesChart) {
+                salesChart.destroy();
+            }
+            salesChart = new Chart(ctx, config);
+        }
+        function updateChartTheme() {
+            initChart();
+        }
+        // Initialize chart
+        initChart();
+    </script>
+
+</body></html>

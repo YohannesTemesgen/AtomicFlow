@@ -1,0 +1,255 @@
+/* Kanban Board Styles */
+.kanban-board {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.kanban-columns {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.kanban-columns::-webkit-scrollbar {
+    height: 8px;
+}
+
+.kanban-columns::-webkit-scrollbar-track {
+    background: #f7fafc;
+    border-radius: 4px;
+}
+
+.kanban-columns::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 4px;
+}
+
+.kanban-columns::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+.kanban-column {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kanban-column.drag-over {
+    background-color: rgba(59, 130, 246, 0.08);
+    transform: scale(1.02);
+}
+
+.kanban-column.drag-over .column-content {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+    border: 2px dashed #3b82f6;
+    border-radius: 8px;
+}
+
+.lead-card {
+    user-select: none;
+    -webkit-user-drag: element;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.2s ease;
+}
+
+.lead-card:hover {
+    transform: translateY(-3px);
+}
+
+.lead-card.dragging {
+    opacity: 0.6;
+    transform: rotate(3deg) scale(1.05);
+    cursor: grabbing;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.column-content {
+    transition: background-color 0.2s ease;
+}
+
+.column-content.drag-over {
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+/* Priority Badge Styles */
+.priority-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .kanban-column {
+        width: 280px;
+    }
+    
+    .board-header .flex {
+        flex-direction: column;
+    }
+    
+    .board-header .flex-1 {
+        min-width: auto;
+    }
+    
+    .statistics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .kanban-column {
+        width: 260px;
+    }
+    
+    .statistics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading Animation */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Empty State */
+.empty-column {
+    opacity: 0.7;
+}
+
+.empty-column:hover {
+    opacity: 1;
+}
+
+/* Drag and Drop Visual Feedback */
+.lead-card[draggable="true"]:active {
+    cursor: grabbing;
+}
+
+.lead-card[draggable="true"]:hover {
+    cursor: grab;
+}
+
+/* Column Header Styles */
+.column-header {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+/* Status Indicator Styles */
+.status-active {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status-on-hold {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.status-lost {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Value Display */
+.lead-value {
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Client Avatar */
+.client-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    background-color: #3b82f6;
+}
+
+/* Date Display */
+.lead-date {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* Card Shadow on Hover */
+.lead-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Description Text Truncation */
+.lead-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+/* Smooth drag placeholder */
+.lead-card.drag-placeholder {
+    opacity: 0.3;
+    border: 2px dashed #cbd5e0;
+    background-color: #f9fafb;
+}
+
+/* Column pulse animation when dragging over */
+@keyframes pulse-blue {
+    0%, 100% {
+        background-color: rgba(59, 130, 246, 0.05);
+    }
+    50% {
+        background-color: rgba(59, 130, 246, 0.15);
+    }
+}
+
+.kanban-column.drag-over .column-content {
+    animation: pulse-blue 1.5s ease-in-out infinite;
+}
+
+/* Modal fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fixed.inset-0 > div {
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Button transitions */
+button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Lead card actions visibility */
+.lead-card button {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.lead-card:hover button {
+    opacity: 1;
+}

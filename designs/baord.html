@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Kanban Board Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6", // Purple from the image
+              "background-light": "#F9FAFB",
+              "background-dark": "#111827",
+              "card-light": "#FFFFFF",
+              "card-dark": "#1F2937",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #374151; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-slate-100 transition-colors duration-200">
+<div class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-7xl px-4">
+<div class="bg-green-100 border border-green-200 text-green-700 px-6 py-3 rounded-xl shadow-sm flex items-center gap-3 dark:bg-green-900/30 dark:border-green-800 dark:text-green-400">
+<span class="material-icons-outlined text-sm">check_circle</span>
+<p class="text-sm font-medium">Task moved successfully</p>
+</div>
+</div>
+<main class="max-w-[1600px] mx-auto pt-20 px-6 pb-10">
+<header class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+<div>
+<h1 class="text-3xl font-bold tracking-tight">Project Kanban Board</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Manage and track your project tasks efficiently</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="relative min-w-[240px]">
+<span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Search tasks..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<select class="bg-white dark:bg-card-dark border-slate-200 dark:border-slate-700 rounded-lg text-sm py-2 px-3 pr-8 focus:ring-primary">
+<option>All Priorities</option>
+<option>High</option>
+<option>Medium</option>
+<option>Low</option>
+</select>
+<select class="bg-white dark:bg-card-dark border-slate-200 dark:border-slate-700 rounded-lg text-sm py-2 px-3 pr-8 focus:ring-primary">
+<option>All Assignees</option>
+<option>Yohannes</option>
+<option>Sarah</option>
+</select>
+<select class="bg-white dark:bg-card-dark border-slate-200 dark:border-slate-700 rounded-lg text-sm py-2 px-3 pr-8 focus:ring-primary">
+<option>All Projects</option>
+<option>Merash</option>
+<option>Eishal</option>
+</select>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-icons-outlined text-sm">filter_list_off</span>
+<span class="font-medium text-sm">Clear</span>
+</button>
+<button class="flex items-center gap-2 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all font-medium shadow-sm">
+<span class="material-icons-outlined text-sm">add</span>
+<span>Add Task</span>
+</button>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-start">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 px-1">
+<div class="w-2.5 h-2.5 rounded-full bg-indigo-500"></div>
+<h3 class="font-semibold text-slate-700 dark:text-slate-200">Backlog</h3>
+<span class="bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs px-2 py-0.5 rounded-full font-medium">5</span>
+</div>
+<div class="flex flex-col gap-4 max-h-[700px] overflow-y-auto custom-scrollbar pr-2">
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all cursor-grab active:cursor-grabbing group">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 text-[10px] font-bold uppercase px-2 py-1 rounded">● Medium</span>
+<span class="bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-[10px] font-bold uppercase px-2 py-1 rounded">Feature</span>
+</div>
+<h4 class="font-bold text-slate-800 dark:text-slate-100 leading-snug group-hover:text-primary transition-colors">implement a language option</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1 mb-4">No description</p>
+<div class="flex items-center gap-2 text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-4">
+<span class="material-icons-outlined text-sm">schedule</span>
+                            Jan 31, 2026 <span class="text-orange-500">Soon</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">Y</div>
+<span class="text-xs text-slate-600 dark:text-slate-400">Yohannes Temesgen</span>
+</div>
+<span class="bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[10px] px-2 py-0.5 rounded">Meras...</span>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 text-[10px] font-bold uppercase px-2 py-1 rounded">● Medium</span>
+<span class="bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-[10px] font-bold uppercase px-2 py-1 rounded">Feature</span>
+</div>
+<h4 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">implement an integration to telegram bot for reminder</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1 mb-4">No description</p>
+<div class="flex items-center gap-2 text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-4">
+<span class="material-icons-outlined text-sm">schedule</span>
+                            Jan 31, 2026 <span class="text-orange-500">Soon</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">Y</div>
+<span class="text-xs text-slate-600 dark:text-slate-400">Yohannes Temesgen</span>
+</div>
+<span class="bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[10px] px-2 py-0.5 rounded">Meras...</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 px-1">
+<div class="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+<h3 class="font-semibold text-slate-700 dark:text-slate-200">To-Do</h3>
+<span class="bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs px-2 py-0.5 rounded-full font-medium">0</span>
+</div>
+<div class="h-[400px] border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl flex flex-col items-center justify-center text-slate-400 text-center p-6">
+<div class="w-12 h-12 bg-slate-50 dark:bg-slate-900 rounded-xl flex items-center justify-center mb-3">
+<span class="material-icons-outlined">inbox</span>
+</div>
+<p class="text-sm font-medium">No tasks yet</p>
+<p class="text-[11px]">Drag tasks here</p>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 px-1">
+<div class="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+<h3 class="font-semibold text-slate-700 dark:text-slate-200">In Progress</h3>
+<span class="bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs px-2 py-0.5 rounded-full font-medium">1</span>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 text-[10px] font-bold uppercase px-2 py-1 rounded">● Medium</span>
+<span class="bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-[10px] font-bold uppercase px-2 py-1 rounded">Feature</span>
+</div>
+<h4 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Make the Kanban board to be dynamic</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 mb-4 line-clamp-2">admin can create different types of Kanban boards and manage them can s...</p>
+<div class="flex items-center gap-2 text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-4">
+<span class="material-icons-outlined text-sm">schedule</span>
+                        Feb 01, 2026 <span class="text-orange-500">Soon</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">Y</div>
+<span class="text-xs text-slate-600 dark:text-slate-400">Yohannes Temesgen</span>
+</div>
+<span class="bg-blue-50 dark:bg-blue-900/20 text-blue-500 text-[10px] px-2 py-0.5 rounded">Project-...</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 px-1">
+<div class="w-2.5 h-2.5 rounded-full bg-purple-500"></div>
+<h3 class="font-semibold text-slate-700 dark:text-slate-200">Review</h3>
+<span class="bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs px-2 py-0.5 rounded-full font-medium">1</span>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 text-[10px] font-bold uppercase px-2 py-1 rounded">● Medium</span>
+<span class="bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-[10px] font-bold uppercase px-2 py-1 rounded">Feature</span>
+</div>
+<h4 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">on create task admin can manage</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 mb-4 line-clamp-2">-on create task admin can edit and manage the all input options and the...</p>
+<div class="flex items-center gap-2 text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-4">
+<span class="material-icons-outlined text-sm">schedule</span>
+                        Feb 01, 2026 <span class="text-orange-500">Soon</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">Y</div>
+<span class="text-xs text-slate-600 dark:text-slate-400">Yohannes Temesgen</span>
+</div>
+<span class="bg-blue-50 dark:bg-blue-900/20 text-blue-500 text-[10px] px-2 py-0.5 rounded">Project-...</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 px-1">
+<div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+<h3 class="font-semibold text-slate-700 dark:text-slate-200">Completed</h3>
+<span class="bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs px-2 py-0.5 rounded-full font-medium">4</span>
+</div>
+<div class="flex flex-col gap-4 max-h-[700px] overflow-y-auto custom-scrollbar pr-2">
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm opacity-90 grayscale-[0.2]">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-[10px] font-bold uppercase px-2 py-1 rounded">● High</span>
+<span class="bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-[10px] font-bold uppercase px-2 py-1 rounded">Feature</span>
+</div>
+<h4 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Create a recognition page</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 mb-4 line-clamp-2">Create an admin page to upload a recognition and on the user side...</p>
+<div class="flex items-center gap-2 text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-4">
+<span class="material-icons-outlined text-sm">schedule</span>
+                            Jan 29, 2026 <span class="text-red-500">Overdue</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">Y</div>
+<span class="text-xs text-slate-600 dark:text-slate-400">Yohannes Temesgen</span>
+</div>
+<span class="bg-blue-50 dark:bg-blue-900/20 text-blue-500 text-[10px] px-2 py-0.5 rounded">Elshal...</span>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm opacity-90 grayscale-[0.2]">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 dark:text-yellow-400 text-[10px] font-bold uppercase px-2 py-1 rounded">● Medium</span>
+</div>
+<h4 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Fix icon issue on the tracker</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 mb-4">No description</p>
+<div class="flex items-center gap-2 text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-4">
+<span class="material-icons-outlined text-sm">schedule</span>
+                            Jan 28, 2026 <span class="text-red-500">Overdue</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">Y</div>
+<span class="text-xs text-slate-600 dark:text-slate-400">Yohannes Temesgen</span>
+</div>
+<span class="bg-blue-50 dark:bg-blue-900/20 text-blue-500 text-[10px] px-2 py-0.5 rounded">Proje...</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<button class="fixed bottom-6 right-6 w-12 h-12 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-700 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform active:scale-95 z-40" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-outlined dark:hidden">dark_mode</span>
+<span class="material-icons-outlined hidden dark:block">light_mode</span>
+</button>
+
+</body></html>
