@@ -21,13 +21,13 @@
                         <div class="size-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
                             <span class="material-symbols-outlined !text-2xl">folder_managed</span>
                         </div>
-                        <h2 class="text-2xl font-extrabold tracking-tight font-display text-white">Pro-<span class="text-primary">File</span></h2>
+                        <h2 class="text-2xl font-extrabold tracking-tight font-display text-white">Atomic <span class="text-primary">Flow</span></h2>
                     </div>
                     <h1 class="text-5xl font-extrabold font-display leading-[1.1] text-white max-w-md">
-                        Automate Your <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Design Pipeline.</span>
+                        Streamline Your <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Business Workflow.</span>
                     </h1>
                     <p class="mt-6 text-slate-400 text-lg max-w-sm">
-                        Join 500+ agencies automating their web-based asset delivery with secure, multi-tenant Laravel power.
+                        Join 500+ teams optimizing their lead conversion and project tracking with our secure, multi-tenant platform.
                     </p>
                 </div>
 
@@ -41,7 +41,7 @@
                             <span class="material-symbols-outlined !text-sm">star</span>
                         </div>
                         <p class="text-white text-lg font-medium leading-relaxed mb-6">
-                            "Pro-File is the missing link in our design-to-dev workflow. The auto-extraction and in-browser previews save us hours every week."
+                            "Atomic Flow has transformed how we handle leads. The visual pipeline and automated tasks ensure nothing falls through the cracks."
                         </p>
                         <div class="flex items-center gap-4">
                             <div class="size-12 rounded-full border-2 border-primary overflow-hidden">
@@ -49,7 +49,7 @@
                             </div>
                             <div>
                                 <div class="font-bold text-white">Sarah Chen</div>
-                                <div class="text-xs text-slate-400 font-bold uppercase tracking-wider">Creative Lead @ Vivid</div>
+                                <div class="text-xs text-slate-400 font-bold uppercase tracking-wider">Operations Lead @ Vivid</div>
                             </div>
                         </div>
                     </div>

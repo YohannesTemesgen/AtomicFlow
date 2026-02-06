@@ -8,6 +8,7 @@ use App\Services\TenantService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
@@ -23,6 +24,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'company_name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -30,12 +32,12 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
-            'password' => $this->passwordRules(),
+            'password' => ['required', 'string', Password::default(), 'confirmed'],
         ])->validate();
 
         return DB::transaction(function () use ($input) {
             $tenant = Tenant::create([
-                'name' => $input['name'] . "'s Workspace",
+                'name' => $input['company_name'],
             ]);
 
             $user = User::create([
